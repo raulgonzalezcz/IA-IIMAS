@@ -1,0 +1,50 @@
+[
+class(top,none,[],[],[]),
+
+class(animales,top,
+	[ [ no(a=>(si,0)), b=>(no,0), c=>(no,0) ],
+	  [ [color=>(azul,1), vuela=>(si,1)]=>>no(carnivoro=>(si,1))]
+	],
+	[ [ no(a=>(si,0)), b=>(no,0), c=>(no,0) ], []],
+	[]
+),
+class(mamiferos,animales,
+	[],
+	[ [],
+	  [ [odia=>(humano,0)]=>>dentro=>(monstruo,0),
+	    [dentro=>(monstruo,0)]=>>no(amigo=>(juguete,2))]
+	],
+	[]),
+class(raton,mamiferos,
+	[ [],
+	  [ [carnivoro=>(si,1)]=>>come=>(si,0)]
+	],
+	[],
+	[ [id=>[miky, mickey], [[color=>(azul,0),no(vuela=>(no,0)),tamanio=>(largo,1)],[[grita=>(si,0)]=>>no(miedoso)=>(si,0)]],[[odia=>(maestro,-1)],[]]],
+	  [id=>[timothy], [[color=>(azul,0),vuela=>(no,0),tamanio=>(largo,1)],[[carnivoro=>(si,0)]=>>animal=>(si,0)]],[[come=>(carne,-1)],[]]]
+	]),
+class(ballena,mamiferos,
+	[ [ponen_huevos=>(no,0)],[]],
+	[],
+	[ [id=>[monstruo],[],[[no(odia=>(humano,-1))],[gusta=>(raton,1)]=>>ecologista=>(si,1),[odia=>(humano,1)]=>>no(ecologista)=>(si,2)]] 
+	]),
+class(elefante, mamiferos,
+	[],
+	[ [come=>(mani,0),odia=>(raton,0)],[]],
+	[ [id=>[dumbo,dumbito],[[color=>(azul,0),vuela=>(no,0),tamanio=>(largo,1)],[[carnivoro=>(si,0)]=>>animal=>(si,0)]],[[no(odia=>(maestro,-1))],[]]],
+	  [id=>[msJumbo],[[color=>(azul,0),vuela=>(no,0),tamanio=>(largo,1)],[[carnivoro=>(si,0)]=>>animal=>(si,0)]],[[odia=>(maestro,-1)],[]]] ]),
+class(humano,mamiferos,
+	[ [come=>(frutas,1),muerde=>(mano,0)],
+	  [ [color=>(azul,1), vuela=>(si,1)]=>>carnivoro=>(si,2), [co=>(azul,1), vuela=>(si,1)]=>>herbivoro=>(si,2)]
+	],
+	[ [odia=>(monstruo,0), gusta=>(ballena,1)],[[gusta=>(ballena,1)]=>>ecologista=>(si,1),[odia=>(monstruo,1)]=>>no(ecologista)=>(si,1)]],
+	[ [id=>[maestro],[[no(vuela=>(alto,0))],[]],[]],
+	  [id=>[gepeto],[[],[[pito=>(chico,0)]=>>no(va=>(si,1))]],[[dentro=>(monstruo,0),no(amigo=>(maestro,0))],[[pito=>(chico,0)]=>>no(va=>(si,1))]]]
+	]),
+class(maquina,top,[],[],[]),
+class(juguete,maquina,
+	[ [color=>(color,0)],[]],
+	[],
+	[ [id=>[pinocho,mono,anonimo],[],[]]
+	])
+]
